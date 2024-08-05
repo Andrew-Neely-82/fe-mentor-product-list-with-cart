@@ -1,6 +1,7 @@
 import EmptyCart from "./EmptyCart";
 import PropTypes from "prop-types";
 import React from "react";
+import CarbonNeutralIcon from "../../assets/svg/icon-carbon-neutral.svg?react";
 
 const RightSide = ({ data, onClick }) => {
   const itemsList = Object.keys(data)
@@ -47,10 +48,17 @@ const RightSide = ({ data, onClick }) => {
             })}
           </ul>
           <hr />
-          <div className="cart-total">
-            <span>Order Total</span>
-            <span>${totalCost}</span>
+          <div className="cart-total-container">
+            <p>Order Total</p>
+            <p className="cart-total">${totalCost}</p>
           </div>
+          <div className="carbon-neutral">
+            <CarbonNeutralIcon />
+            <span>
+              This is a<span className="bold"> carbon-neutral</span>&nbsp;delivery
+            </span>
+          </div>
+          <button className="confirm-order">Confirm Order</button>
         </>
       ) : (
         <EmptyCart />

@@ -14,6 +14,8 @@ $colors: (
 // variables
 $border-card: 0.5rem;
 $mq-mobile: 24rem;
+$text-size-product: 1rem;
+$text-size-normal: calc(1rem - 2px);
 
 body {
   display: grid;
@@ -85,15 +87,15 @@ svg:not(.cart) {
 
     .button-container {
       position: absolute;
-      top: 15rem;
-      left: calc(25%);
+      top: 14.75rem;
+      left: 50%;
+      transform: translate(-50%);
       display: flex;
       flex-direction: row;
       align-items: center;
-      max-width: 12rem;
-      width: 8rem;
-      height: 2rem;
-      outline: 1px solid map-get($colors, text-dark);
+      width: 10rem;
+      height: 2.5rem;
+      outline: 1px solid hsl(14, 65%, 9%);
       border-radius: 10rem;
 
       @media screen and (max-width: $mq-mobile) {
@@ -125,9 +127,17 @@ svg:not(.cart) {
       place-content: center;
       background: map-get($colors, bg-cart);
 
+      &:hover {
+        outline: 1px solid map-get($colors, red);
+      }
+
       button {
         width: 100%;
         border: 0;
+
+        &:hover {
+          color: map-get($colors, red);
+        }
       }
     }
 
@@ -144,6 +154,16 @@ svg:not(.cart) {
         border-radius: 100vw;
         color: white;
         padding: 0.25rem;
+
+        &:hover {
+          background: map-get($colors, bg-cart);
+
+          svg {
+            path {
+              fill: map-get($colors, red) !important;
+            }
+          }
+        }
       }
     }
 
@@ -153,10 +173,12 @@ svg:not(.cart) {
 
       .category {
         color: map-get($colors, text-light);
+        font-size: $text-size-normal;
       }
 
       .name {
         color: map-get($colors, text-dark);
+        font-size: $text-size-product;
       }
 
       .price {
@@ -181,6 +203,7 @@ svg:not(.cart) {
     font-size: 1.25rem;
     color: map-get($colors, red);
     width: 20rem;
+    margin-top: 0;
   }
 
   .empty-cart {
@@ -201,7 +224,8 @@ svg:not(.cart) {
 
     li {
       display: flex;
-      // flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
       list-style: none;
     }
   }
@@ -220,6 +244,50 @@ svg:not(.cart) {
       color: map-get($colors, Rose-400);
       font-weight: 700;
       margin-left: 0.5rem;
+    }
+  }
+
+  .cart-total-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .cart-total {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
+
+  .carbon-neutral {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: map-get($colors, bg-main);
+    border-radius: $border-card;
+    padding: 1rem;
+
+    svg {
+      height: 1rem !important;
+      width: 1rem !important;
+      margin-right: 0.5rem;
+    }
+
+    .bold {
+      font-weight: 700;
+    }
+  }
+
+  .confirm-order {
+    background: map-get($colors, red);
+    color: white;
+    height: 2rem;
+    width: 100%;
+    border: none;
+    border-radius: 10rem;
+    margin-top: 1rem;
+
+    &:hover {
+      filter: brightness(0.8);
     }
   }
 }
