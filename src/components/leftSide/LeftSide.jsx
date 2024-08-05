@@ -1,15 +1,19 @@
-import PropTypes from "prop-types";
 import Item from "./item/Item";
+import itemsData from "../../data/data.json";
+import { loadImage } from "../../utils/loadImages";
 
-const LeftSide = ({ props }) => {
+const LeftSide = () => {
   return (
     <section className="left-side">
       <h2>Desserts</h2>
-      <Item itemName="Waffle with Berries" itemCategory="Waffle" itemPrice={6.5} />
+      <div className="item-container">
+        {itemsData.map((item, index) => {
+          const image = loadImage(item.image.desktop);
+          return <Item key={index} image={image} itemCategory={item.category} itemName={item.name} itemPrice={item.price} />;
+        })}
+      </div>
     </section>
   );
 };
-
-LeftSide.propTypes = {};
 
 export default LeftSide;

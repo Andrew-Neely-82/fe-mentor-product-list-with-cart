@@ -34,25 +34,71 @@ body {
 main {
   display: grid;
   grid-template-columns: repeat(2, auto);
+  gap: 2rem;
+  width: 100%;
+  margin-block: 4rem;
 }
 
 button {
   cursor: pointer;
 }
 
+svg:not(.cart) {
+  width: 0.5rem !important;
+  height: 0.5rem !important;
+}
+
 .left-side {
+  .item-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
   .item {
+    position: relative;
     display: flex;
     flex-direction: column;
+    gap: 2rem;
 
     img {
+      border-radius: var(--border-card);
+      width: 16rem;
+      height: 16rem;
     }
 
     .button-container {
+      position: absolute;
+      top: 15rem;
+      left: calc(25%);
       display: flex;
       flex-direction: row;
+      align-items: center;
+      max-width: 12rem;
+      width: 8rem;
+      height: 2rem;
+      outline: 1px solid map-get($colors, text-dark);
       border-radius: 10rem;
-      padding: 0.5rem;
+    }
+
+    div {
+      button {
+        display: flex;
+        justify-content: center;
+        gap: 0.25rem;
+        padding: 0.5rem;
+        background: transparent;
+
+        .cart {
+          width: 1rem;
+          height: 1rem;
+        }
+      }
+
+      .cart-amount {
+        width: 2rem;
+        text-align: center;
+      }
     }
 
     .not-selected {
@@ -60,21 +106,24 @@ button {
       background: map-get($colors, bg-cart);
 
       button {
-        background: transparent;
+        width: 100%;
         border: 0;
       }
     }
 
     .selected {
-      justify-content: space-between;
+      justify-content: space-around;
       background: map-get($colors, red);
       color: white;
 
       button {
-        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border: 1px solid map-get($colors, bg-cart);
         border-radius: 100vw;
         color: white;
+        padding: 0.25rem;
       }
     }
 
@@ -106,8 +155,13 @@ button {
   background: map-get($colors, bg-cart);
   border-radius: var(--border-card);
   padding: 1rem;
+  height: fit-content;
 
   h3 {
     color: map-get($colors, red);
   }
+}
+
+.highlight {
+  outline: 2px solid map-get($colors, red);
 }
