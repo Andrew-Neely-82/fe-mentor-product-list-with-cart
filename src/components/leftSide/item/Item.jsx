@@ -2,31 +2,25 @@ import Add from "../../../assets/svg/icon-increment-quantity.svg?react";
 import Remove from "../../../assets/svg/icon-decrement-quantity.svg?react";
 import AddToCart from "../../../assets/svg/icon-add-to-cart.svg?react";
 import PropTypes from "prop-types";
-import { useState } from "react";
 
-const Item = ({ image, itemCategory, itemName, itemPrice }) => {
-  const [amountInCart, setAmountInCart] = useState(0);
-
-  const addToCart = () => setAmountInCart((prev) => prev + 1);
-  const removeFromCart = () => setAmountInCart((prev) => (prev > 0 ? prev - 1 : prev));
-
+const Item = ({ image, itemCategory, itemName, itemPrice, amountInCart, addClickFunc, removeClickFunc }) => {
   return (
     <div className="item">
       <img className={amountInCart > 0 ? "highlight" : ""} src={image} alt="item-image" />
       {amountInCart === 0 ? (
         <div className="button-container not-selected">
-          <button onClick={addToCart}>
-            <AddToCart className="cart"/>
+          <button onClick={addClickFunc}>
+            <AddToCart className="cart" />
             Add to Cart
           </button>
         </div>
       ) : (
         <div className="button-container selected">
-          <button onClick={removeFromCart}>
+          <button onClick={removeClickFunc}>
             <Remove />
           </button>
           <span className="cart-amount">{amountInCart}</span>
-          <button onClick={addToCart}>
+          <button onClick={addClickFunc}>
             <Add />
           </button>
         </div>
@@ -45,6 +39,9 @@ Item.propTypes = {
   itemCategory: PropTypes.string.isRequired,
   itemName: PropTypes.string.isRequired,
   itemPrice: PropTypes.number.isRequired,
+  amountInCart: PropTypes.number.isRequired,
+  addClickFunc: PropTypes.func.isRequired,
+  removeClickFunc: PropTypes.func.isRequired,
 };
 
 export default Item;

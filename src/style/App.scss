@@ -11,9 +11,9 @@ $colors: (
   text-dark: hsl(14, 65%, 9%),
 );
 
-:root {
-  --border-card: 0.5rem;
-}
+// variables
+$border-card: 0.5rem;
+$mq-mobile: 24rem;
 
 body {
   display: grid;
@@ -37,6 +37,10 @@ main {
   gap: 2rem;
   width: 100%;
   margin-block: 4rem;
+
+  @media screen and (max-width: $mq-mobile) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 button {
@@ -53,6 +57,10 @@ svg:not(.cart) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+
+    @media screen and (max-width: $mq-mobile) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   .item {
@@ -61,10 +69,18 @@ svg:not(.cart) {
     flex-direction: column;
     gap: 2rem;
 
+    @media screen and (max-width: $mq-mobile) {
+      width: 20rem;
+    }
+
     img {
-      border-radius: var(--border-card);
+      border-radius: $border-card;
       width: 16rem;
       height: 16rem;
+
+      @media screen and (max-width: $mq-mobile) {
+        width: 100%;
+      }
     }
 
     .button-container {
@@ -79,6 +95,10 @@ svg:not(.cart) {
       height: 2rem;
       outline: 1px solid map-get($colors, text-dark);
       border-radius: 10rem;
+
+      @media screen and (max-width: $mq-mobile) {
+        left: calc(25% + 1rem);
+      }
     }
 
     div {
@@ -96,7 +116,7 @@ svg:not(.cart) {
       }
 
       .cart-amount {
-        width: 2rem;
+        width: 4rem;
         text-align: center;
       }
     }
@@ -153,12 +173,13 @@ svg:not(.cart) {
 
 .right-side {
   background: map-get($colors, bg-cart);
-  border-radius: var(--border-card);
+  border-radius: $border-card;
   padding: 1rem;
   height: fit-content;
 
   h3 {
     color: map-get($colors, red);
+    width: 20rem;
   }
 }
 
