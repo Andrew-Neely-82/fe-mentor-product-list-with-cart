@@ -1,7 +1,7 @@
-import Item from "./item/Item";
-import itemsData from "../../data/data.json";
 import { loadImage } from "../../utils/loadImages";
+import itemsData from "../../data/data.json";
 import PropTypes from "prop-types";
+import Item from "./item/Item";
 
 const LeftSide = ({ itemsInCart, addToCart, removeFromCart }) => {
   return (
@@ -10,6 +10,7 @@ const LeftSide = ({ itemsInCart, addToCart, removeFromCart }) => {
       <div className="item-container">
         {itemsData.map((item, index) => {
           const image = loadImage(item.image.desktop);
+          // prettier-ignore
           return (
             <Item
               key={index}

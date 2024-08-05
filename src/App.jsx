@@ -17,7 +17,7 @@ function App() {
     }));
   };
 
-  const removeFromCart = (itemName, itemPrice) => {
+  const removeFromCart = (itemName) => {
     setItemsInCart((prev) => {
       const newQuantity = Math.max((prev[itemName]?.quantity || 0) - 1, 0);
       const newTotal = prev.total - 1;

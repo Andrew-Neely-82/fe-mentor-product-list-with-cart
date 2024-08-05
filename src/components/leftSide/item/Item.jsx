@@ -1,5 +1,5 @@
-import Add from "../../../assets/svg/icon-increment-quantity.svg?react";
 import Remove from "../../../assets/svg/icon-decrement-quantity.svg?react";
+import Add from "../../../assets/svg/icon-increment-quantity.svg?react";
 import AddToCart from "../../../assets/svg/icon-add-to-cart.svg?react";
 import PropTypes from "prop-types";
 

@@ -178,11 +178,61 @@ svg:not(.cart) {
   height: fit-content;
 
   h3 {
+    font-size: 1.25rem;
     color: map-get($colors, red);
     width: 20rem;
+  }
+
+  .empty-cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    svg {
+      width: 8rem !important;
+      height: 8rem !important;
+    }
+  }
+
+  ul {
+    padding: 0;
+
+    li {
+      display: flex;
+      // flex-direction: column;
+      list-style: none;
+    }
+  }
+
+  .cart-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-math {
+    .cart-item-price {
+      margin-left: 1rem;
+    }
+
+    .cart-item-total {
+      color: map-get($colors, Rose-400);
+      font-weight: 700;
+      margin-left: 0.5rem;
+    }
   }
 }
 
 .highlight {
   outline: 2px solid map-get($colors, red);
+}
+
+.red {
+  color: map-get($colors, red);
+  font-weight: 600;
+}
+
+.brown {
+  color: map-get($colors, Rose-400);
 }
