@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
+
+$colors: (
+  red: hsl(14, 86%, 42%),
+  green: hsl(159, 69%, 38%),
+  bg-cart: hsl(24, 45%, 98%),
+  bg-main: hsl(13, 29%, 94%),
+  Rose-300: hsl(14, 25%, 72%),
+  Rose-400: hsl(7, 20%, 60%),
+  text-light: hsl(12, 20%, 44%),
+  text-dark: hsl(14, 65%, 9%),
+);
+
+:root {
+  --border-card: 0.5rem;
+}
+
+body {
+  display: grid;
+  height: 100svh;
+  width: 100vw;
+  place-items: center;
+  max-width: 1440px;
+  background: map-get($colors, bg-main);
+  font-family: "Red Hat Text", sans-serif;
+  font-optical-sizing: auto;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-style: normal;
+  margin: 0;
+  margin-inline: auto;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+
+button {
+  cursor: pointer;
+}
+
+.left-side {
+  .item {
+    display: flex;
+    flex-direction: column;
+
+    img {
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: row;
+      border-radius: 10rem;
+      padding: 0.5rem;
+    }
+
+    .not-selected {
+      place-content: center;
+      background: map-get($colors, bg-cart);
+
+      button {
+        background: transparent;
+        border: 0;
+      }
+    }
+
+    .selected {
+      justify-content: space-between;
+      background: map-get($colors, red);
+      color: white;
+
+      button {
+        background: transparent;
+        border: 1px solid map-get($colors, bg-cart);
+        border-radius: 100vw;
+        color: white;
+      }
+    }
+
+    .item-info {
+      display: flex;
+      flex-direction: column;
+
+      .category {
+        color: map-get($colors, text-light);
+      }
+
+      .name {
+        color: map-get($colors, text-dark);
+      }
+
+      .price {
+        color: map-get($colors, red);
+      }
+
+      .name,
+      .price {
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.right-side {
+  background: map-get($colors, bg-cart);
+  border-radius: var(--border-card);
+  padding: 1rem;
+
+  h3 {
+    color: map-get($colors, red);
+  }
+}
