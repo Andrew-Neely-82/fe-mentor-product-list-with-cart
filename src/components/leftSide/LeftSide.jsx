@@ -10,7 +10,6 @@ const LeftSide = ({ itemsInCart, addToCart, removeFromCart }) => {
       <div className="item-container">
         {itemsData.map((item, index) => {
           const image = loadImage(item.image.desktop);
-          // prettier-ignore
           return (
             <Item
               key={index}
@@ -19,8 +18,8 @@ const LeftSide = ({ itemsInCart, addToCart, removeFromCart }) => {
               itemName={item.name}
               itemPrice={item.price}
               amountInCart={itemsInCart[item.name]?.quantity || 0}
-              addClickFunc={() => addToCart(item.name, item.price)}
-              removeClickFunc={() => removeFromCart(item.name, item.price)}
+              addClickFunc={() => addToCart(item.name, item.price, image)}
+              removeClickFunc={() => removeFromCart(item.name)}
             />
           );
         })}
